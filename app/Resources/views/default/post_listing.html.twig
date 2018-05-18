@@ -1,0 +1,24 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="margin-bottom: 50px;">Je préfère... des news</h2>
+        </div>
+    </div>
+    {% for post in posts %}
+        <div class="row">
+            <div class="col-md-8">
+                <h3><a href="{{ url('news_show', {slug: post.slug()}) }}">{{ post.title }}</a></h3>
+                <div style="font-style: italic">
+                    {{ post.dateCreated|date('d/m/Y') }}
+                </div>
+                <div>{{ post.content|truncate(300) }}</div>
+            </div>
+            <div class="col-md-4" style="overflow-x: hidden;">
+                <img src="/uploads/{{ post.imageName }}" alt="">
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

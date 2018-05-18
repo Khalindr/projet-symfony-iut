@@ -1,0 +1,110 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    <div class="container-full">
+        <h1>Dans {{ cat.titre }}, je préfère...</h1>
+        <div class="row">
+            <img src="{{ asset('bundles/app/images/versus.png') }}" alt="" id="versus">
+            <div class="col-md-6 prop-conteneur">
+                <a href="{{url('votecat', {'category':cat.titre,'id':prop1.id})}}"><img src="/uploads/{{ prop1.imageName }}" alt="{{ prop1.titre }}" id=""></a>
+            </div>
+            <div class="col-md-6 prop-conteneur">
+                <a href="{{url('votecat', {'category':cat.titre,'id':prop2.id})}}"><img src="/uploads/{{ prop2.imageName }}" alt="{{ prop2.titre }}" id=""></a>
+            </div>
+        </div>
+
+    </div>
+
+    <style>
+        #versus {
+            position: absolute;
+            z-index:55;
+            width:300px;
+            left:50%;
+            top:50%;
+            transform: translate(-150px,-150px);
+        }
+        .prop-conteneur {
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            width: 50vw;
+            height:80vh;
+            overflow: hidden;
+            background: lightblue;
+            cursor: pointer;
+        }
+        .prop-conteneur a {
+            background: red;
+        }
+        .prop-conteneur img {
+            -webkit-transition: all 800ms;
+            -moz-transition: all 800ms;
+            -ms-transition: all 800ms;
+            -o-transition: all 800ms;
+            transition: all 800ms;
+            /*filter: grayscale(100%);*/
+            cursor: pointer;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            top:0;
+            left:0;
+        }
+        /*.prop-conteneur:first-of-type::before {*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*top:0;*/
+        /*left:0;*/
+        /*width:100%;*/
+        /*height: 100%;*/
+        /*background: deepskyblue;*/
+        /*opacity:0.5;*/
+        /*z-index:50;*/
+        /*transition: all 500ms;*/
+        /*}*/
+        /*.prop-conteneur:last-of-type::before {*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*top:0;*/
+        /*left:0;*/
+        /*width:100%;*/
+        /*height: 100%;*/
+        /*background: red;*/
+        /*opacity:0.5;*/
+        /*z-index:50;*/
+        /*transition: all 500ms;*/
+        /*}*/
+        .prop-conteneur:hover::before {
+            opacity:0;
+        }
+        .prop-conteneur:hover img {
+            -webkit-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            transform: scale(1.5);
+            -webkit-transform-origin: top center;
+            -moz-transform-origin: top center;
+            -ms-transform-origin: top center;
+            -o-transform-origin: top center;
+            transform-origin: top center;
+        }
+        .prop-conteneur:first-child {
+            border-right: 1px solid #000;
+        }
+        .prop-conteneur:last-child {
+            border-left: 1px solid #000;
+        }
+        h1 {
+            margin-top:30px;
+        }
+        .alert {
+            position: absolute;
+            background: green;
+            color: #fff;
+        }
+    </style>
+{% endblock %}

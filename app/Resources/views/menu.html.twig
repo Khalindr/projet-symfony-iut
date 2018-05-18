@@ -1,0 +1,11 @@
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link {% if "homepage" in route  %}active{% endif %}" href="{{ url('homepage') }}">Accueil</a></li>
+        {#<li class="nav-item"><a class="nav-link {% if "admin_post_" in route  %}active{% endif %}" href="{{ url('admin_post_index') }}">Posts</a></li>#}
+        <li class="nav-item"><a class="nav-link {% if "presentation_" in route  %}active{% endif %}" href="{{ url('presentation_index') }}">Présentation</a></li>
+        <li class="nav-item"><a class="nav-link {% if "searchhp" in route  %}active{% endif %}" href="{{ url('searchhp') }}">Recherche</a></li>
+        <li class="nav-item"><a class="nav-link {% if "news_list" in route  %}active{% endif %}" href="{{ url('news_list') }}">News</a></li>
+        <li class="nav-item"><a class="nav-link {% if "category" in route %}active{% endif %}" href="{{ url('category_list') }}">Nos Tops</a></li>
+    </ul>
+</div>

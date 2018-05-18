@@ -1,0 +1,18 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    {% for top in categories %}
+        <h1><a href="{{url('category', {'slug':top.titre})}}">{{ top.titre }}</a></h1>
+        {#{%  if post.category %}<h2>Catégorie : {{ post.category.title }}</h2>{% endif %}#}
+        {#<div>{{ post.content }}</div>#}
+        {% if top.itemGagnant is not null %}
+            <strong>Nos votants préfèrent :</strong> <i>{{ top.itemGagnant.titre }}</i>
+            <br>
+            <img width="" src="/uploads/{{ top.itemGagnant.imageName }}" alt="{{ top.itemGagnant.titre }}" style="width: 500px;">
+
+            {% endif %}
+        {#<p>{{ dump(top.itemGagnant) }}</p>#}
+
+        <hr>
+    {% endfor %}
+{% endblock %}
